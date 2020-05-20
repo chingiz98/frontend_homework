@@ -24,7 +24,8 @@ const mapDispatchToProps = {
 class HistoryTab extends React.Component {
 
     state = {
-
+        start: null,
+        end: null
     };
 
     componentDidMount = () => {
@@ -60,6 +61,11 @@ class HistoryTab extends React.Component {
             avatar = <ArrowDownOutlined />;
         }
 
+        description = <div style={{ display:"flex"}}>
+            {description}
+            <Text style={{marginLeft:"auto"}}>{new Date(item.timestamp).toLocaleString()}</Text>
+        </div>
+
         return (
             <List.Item>
                 <List.Item.Meta
@@ -79,12 +85,42 @@ class HistoryTab extends React.Component {
             this.props.getTransactionsRequest(this.props.displayedAccount.id);
         }
 
+        let filteredTransactions = transactions;
+
+        if(this.state.start && this.state.end){
+            filteredTransactions = transactions.filter((item) => {
+                let trDate = new Date(item.timestamp);
+                return (trDate >= this.state.start._d && trDate <= this.state.end._d)
+            });
+        }
+
         return(
             <div>
-                <Card size="default" title="Operations history" extra={<RangePicker/>} style={{width:"fit-content" , minWidth: 500, marginTop: 10 }}>
+                <Card size="default" title="Operations history" extra={
+                    <RangePicker
+                        onChange={(dates) => {
+                            if(dates){
+                                this.setState(
+                                    {
+                                        start: dates[0],
+                                        end: dates[1]
+                                    }
+                                );
+                            } else {
+                                this.setState(
+                                    {
+                                            start: null,
+                                            end: null
+                                        }
+                                    );
+                                }
+                            }
+                        }
+                    />
+                } style={{width:"fit-content" , minWidth: 500, marginTop: 10 }}>
                     <List
                         itemLayout="horizontal"
-                        dataSource={this.props.transactionsLoading ? [] : transactions}
+                        dataSource={this.props.transactionsLoading ? [] : filteredTransactions}
                         renderItem={item => (
                             this.getListItem(item)
                         )}

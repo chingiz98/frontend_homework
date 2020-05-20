@@ -116,6 +116,10 @@ class AccountsTabs extends React.Component {
             depositModalVisible : true,
         });
     };
+
+    isNumeric = (n) => {
+        return !isNaN(parseFloat(n)) && isFinite(n);
+    }
     makeDeposit = e => {
         console.log(e);
         if(!depositAmountInput.current.state.value){
@@ -128,6 +132,13 @@ class AccountsTabs extends React.Component {
             return;
         }
 
+
+        if(!this.isNumeric(depositAmountInput.current.state.value)){
+            message.error("Deposit amount should be number", 1);
+            return;
+        }
+
+
         this.props.makeDepositRequest(this.props.displayedAccount.id, depositAmountInput.current.state.value)
 
         this.setState({
@@ -137,6 +148,8 @@ class AccountsTabs extends React.Component {
 
 
     };
+
+
     cancelDeposit = e => {
         console.log(e);
         this.setState({
@@ -165,6 +178,11 @@ class AccountsTabs extends React.Component {
 
         if(!amount){
             message.error("Transfer amount can't be empty", 1);
+            return;
+        }
+
+        if(!this.isNumeric(amount)){
+            message.error("Transfer amount should be number", 1);
             return;
         }
 
