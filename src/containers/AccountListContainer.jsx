@@ -4,23 +4,18 @@ import { getAccountsRequest, setDisplayedAccount, dismissError } from '../action
 import { getInfoRequest, updateInfoRequest, dismissUserError } from '../actions/user.actions'
 import { Redirect } from 'react-router-dom'
 import {
-    Col,
     Avatar,
-    Card,
     PageHeader,
-    Tabs,
     Button,
     Statistic,
     Spin,
     Typography,
     message,
     Input,
-    Cascader,
-    Checkbox, Modal
+    Modal
 } from 'antd';
 import { UserOutlined, LogoutOutlined, LoadingOutlined } from '@ant-design/icons';
 import Text from "antd/lib/typography/Text";
-import ReactScrollableList from 'react-scrollable-list'
 import AccountsTabs from "../components/AccountsTabs";
 import utils from "../utils";
 const { Title } = Typography;
@@ -135,10 +130,9 @@ class AccountListContainer extends React.Component {
 
 
     render() {
-        const { displayedAccount, error, accounts, loading, setDisplayedAccount, displayedUser, loadingUser, updatingUser, userError } = this.props;
+        const { displayedAccount, error, accounts, loading, displayedUser, updatingUser, userError } = this.props;
 
         let totalBalance = 0;
-
 
         if(accounts){
             accounts.forEach(function(item) {
@@ -183,7 +177,7 @@ class AccountListContainer extends React.Component {
                     extra={[
                             <div>
                                 <Typography.Text strong={true} style={{fontSize:18}}>{loading ? "Loading user" : displayedUser.name}</Typography.Text>
-                                <a><Avatar onClick={this.showUserInfoModal} style={{marginLeft:8}} size={32} icon={<UserOutlined />} /></a>
+                                <a href="#"><Avatar onClick={this.showUserInfoModal} style={{marginLeft:8}} size={32} icon={<UserOutlined />} /></a>
                                 <Button onClick={() => {this.logout()}} style={{marginLeft:0}} type="primary" shape="round" icon={<LogoutOutlined />}/>
                             </div>
 
@@ -206,7 +200,6 @@ class AccountListContainer extends React.Component {
                         <div style={{ display: "flex", justifyContent: 'center', alignItems: 'center', flexDirection:"column"}}>
                             <Avatar  onClick={this.showUserInfoModal}  size={84} icon={<UserOutlined/>} />
                         </div>
-
                     <Title level={4} style={{marginTop:8}}>Username:</Title>
                     <Input ref={usernameInput} placeholder="Username (e-mail)" defaultValue={displayedUser.username}/>
                         <Title level={4} style={{marginTop:8}}>Name:</Title>

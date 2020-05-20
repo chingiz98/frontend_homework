@@ -8,8 +8,6 @@ import rootSaga from './sagas';
 import App from './App';
 
 
-import { Input } from 'antd';
-
 
   const sagaMidddleware = createSagaMiddleware();
   const store = createStore(rootReducer, applyMiddleware(sagaMidddleware));

@@ -3,7 +3,7 @@ import { Form, Input, Button, message }  from 'antd';
 import Icon from '@ant-design/icons';
 import { Spin } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
-import '../../styles.css';
+import '../styles.css';
 import 'antd/dist/antd.css';
 import { signupRequest, dismissError } from "../actions/auth.actions";
 import { connect } from "react-redux";

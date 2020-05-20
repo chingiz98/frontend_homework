@@ -1,4 +1,4 @@
-import { put, call, takeEvery, delay } from 'redux-saga/effects';
+import { put, call, takeEvery } from 'redux-saga/effects';
 import {LOGIN_REQUEST, loginSuccess, loginError } from '../actions/auth.actions';
 import {SIGNUP_REQUEST, signupSuccess, signupError } from '../actions/auth.actions';
 import { loginRequest, signUpRequest } from '../api/accountsApi';

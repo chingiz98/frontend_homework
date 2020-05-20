@@ -137,7 +137,6 @@ const accounts = (state = initialState, action) => {
             let from = action.fromId;
             let to = action.toId;
             let amount = action.amount;
-            let comment = action.comment;
 
             let newDisplayedAccount = {
                 ...state.displayedAccount,

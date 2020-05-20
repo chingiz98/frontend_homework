@@ -78,7 +78,6 @@ function makeRequest(url, method, auth, data, args) {
                     case 500:
                         console.log('Internal server error');
                         return response.json().then(reject.bind(Promise));
-                        break;
                     default:
                         console.log('Some error occured');
                         break;

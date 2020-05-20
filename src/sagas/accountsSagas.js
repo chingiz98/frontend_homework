@@ -1,4 +1,4 @@
-import { put, call, takeEvery, delay } from 'redux-saga/effects';
+import { put, call, takeEvery } from 'redux-saga/effects';
 import {GET_ACCOUNTS_REQUEST, getAccountsSuccess, getAccountsError } from '../actions/accountsActions';
 import { fetchAccounts, addAccountRequest, deleteAccountRequest, makeDepositRequest, makeTransferRequest, getTransactionsRequest } from '../api/accountsApi';
 import {ADD_ACCOUNT_REQUEST, addAccountSuccess, addAccountError } from '../actions/accountsActions';

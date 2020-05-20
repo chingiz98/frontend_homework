@@ -1,6 +1,5 @@
 import React from 'react';
-import {Card, Statistic, DatePicker, List, Avatar, Icons, Typography} from "antd";
-import ReactScrollableList from "react-scrollable-list";
+import {Card, DatePicker, List, Avatar, Typography} from "antd";
 import { ArrowDownOutlined } from '@ant-design/icons';
 import { ArrowUpOutlined } from '@ant-design/icons';
 import {getTransactionsRequest, dismissError} from "../actions/accountsActions";
@@ -74,7 +73,7 @@ class HistoryTab extends React.Component {
 
 
     render() {
-        const { accounts, displayedAccount, transactions, makingTransfer, makingDeposit } = this.props;
+        const { transactions, makingTransfer, makingDeposit } = this.props;
 
         if(makingTransfer || makingDeposit){
             this.props.getTransactionsRequest(this.props.displayedAccount.id);

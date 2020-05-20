@@ -3,14 +3,13 @@ import { Form, Input, Button, message }  from 'antd';
 import Icon from '@ant-design/icons';
 import { Spin } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
-import '../../styles.css';
+import '../styles.css';
 import 'antd/dist/antd.css';
 import { loginRequest, dismissError } from "../actions/auth.actions";
 import { connect } from "react-redux";
 import { Redirect, NavLink } from 'react-router-dom'
 
 const FormItem = Form.Item;
-const loading_key = 'loading_key';
 
 const mapStateToProps = (state, parentProps) => ({
     loading: state.authentication.loading,
@@ -57,7 +56,7 @@ class LoginForm extends React.Component {
     }
 
     render() {
-        const { loggedIn, loading, accessToken, error } = this.props;
+        const { loading, error } = this.props;
 
         if(this.props.isAuthorized()){
                 return <Redirect to="/home"/>;

@@ -1,18 +1,14 @@
 import React from 'react';
 import {Card, message, Statistic} from "antd";
-import ReactScrollableList from "react-scrollable-list";
-import {Input, Tabs, Button, Descriptions, Typography, Modal, Cascader, Checkbox} from 'antd';
+import {Input, Tabs, Button, Typography, Modal, Cascader, Checkbox} from 'antd';
 import {addAccountRequest, setDisplayedAccount, deleteAccountRequest, makeDepositRequest, makeTransferRequest } from "../actions/accountsActions";
 import {connect} from "react-redux";
 import { ExclamationCircleOutlined } from '@ant-design/icons';
-import { LoadingOutlined } from '@ant-design/icons';
 import HistoryTab from "./HistoryTab.jsx";
 const { TabPane } = Tabs;
 const { confirm } = Modal;
 const { Title } = Typography;
 
-
-const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
 const mapStateToProps = (state, parentProps) => ({
     accountAdding: state.accounts.accountAdding,
@@ -64,23 +60,6 @@ class AccountsTabs extends React.Component {
 
             </Card>;
 
-        const transactions = [{
-            toId: 4000000003,
-            fromId: 4000000002,
-            amount: 350,
-            comment: "TEST",
-            type: "transaction",
-            timestamp : new Date()
-        },
-            {
-                toId: 4000000003,
-                fromId: null,
-                amount: 350,
-                comment: "t123",
-                type: "deposit",
-                timestamp : new Date()
-            }
-        ]
 
         return (
             <TabPane tab={<Title level={4} style={{marginTop:6, marginLeft: 12}}>{a.name}</Title>} key={a.id}>
@@ -229,7 +208,7 @@ class AccountsTabs extends React.Component {
     }
 
     render() {
-        const { accounts, displayedAccount, accountAdding, makingDeposit, makingTransfer } = this.props;
+        const { accounts, displayedAccount, makingDeposit, makingTransfer } = this.props;
         if(!accounts.length) {
             return (
                 <div style={{ display: "flex", justifyContent: 'center', alignItems: 'center', flexDirection:"column", height:"65vh"}}>
@@ -241,17 +220,6 @@ class AccountsTabs extends React.Component {
                 </div>
             )
         }
-        const options = [
-            {
-                value: 'zhejiang',
-                label: 'Zhejiang',
-
-            },
-            {
-                value: 'jiangsu',
-                label: 'Jiangsu',
-            },
-        ];
 
         const opt = [];
 

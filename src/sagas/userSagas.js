@@ -1,4 +1,4 @@
-import { put, call, takeEvery, delay } from 'redux-saga/effects';
+import { put, call, takeEvery } from 'redux-saga/effects';
 import {GET_INFO_REQUEST, getInfoSuccess, getInfoError } from '../actions/user.actions';
 import {UPDATE_INFO_REQUEST, updateInfoSuccess, updateInfoError } from '../actions/user.actions';
 import { getCurrentUserInfoRequest, updateCurrentUserInfoRequest } from '../api/accountsApi';
@@ -14,7 +14,7 @@ function* getInfo(){
 
 function* updateInfo(action){
     try {
-        const data = yield call(updateCurrentUserInfoRequest, action.username, action.name);
+        yield call(updateCurrentUserInfoRequest, action.username, action.name);
         yield put(updateInfoSuccess(action.username, action.name));
     } catch (error) {
         yield put(updateInfoError(error));

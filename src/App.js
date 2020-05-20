@@ -1,9 +1,9 @@
 import React from 'react';
-import AccountListContainer from './modules/accounts/containers/AccountListContainer';
+import AccountListContainer from './containers/AccountListContainer';
 import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
-import LoginForm from "./modules/accounts/containers/LoginForm";
-import utils from "./modules/accounts/utils";
-import SignUpForm from "./modules/accounts/containers/SignUpForm";
+import LoginForm from "./containers/LoginForm";
+import utils from "./utils";
+import SignUpForm from "./containers/SignUpForm";
 
 
 class App extends React.Component {

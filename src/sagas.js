@@ -1,7 +1,7 @@
-import { accountsSagas } from './modules/accounts/sagas/accountsSagas';
+import { accountsSagas } from './sagas/accountsSagas';
 import { all } from 'redux-saga/effects';
-import { authSagas } from './modules/accounts/sagas/authSagas';
-import { userSagas } from './modules/accounts/sagas/userSagas';
+import { authSagas } from './sagas/authSagas';
+import { userSagas } from './sagas/userSagas';
 
 function* rootSaga() {
     yield all([
